@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferlucci Lundi?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Silkscreen&family=Rock+Salt&display=swap');
+
+:root {
+    --primary-color: #a000e4;
+    --secondary-color: #bf009c;
+    --tertiary-color: #8000ff;
+    --fourwhatever-color: #000000;
+    --background-color: #0e0e0e;
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Silkscreen', monospace;
+
+    /* font-family: 'Rock Salt', cursive; */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    image-rendering: pixelated;
+    cursor: crosshair;
+}
+
+.background-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    mix-blend-mode: lighten;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 2%;
+    filter: blur(40px);
+    opacity: 0.3;
+    background-blend-mode: screen;
+}
+
+.shape-1 {
+    width: 80vw;
+    height: 80vw;
+    background-color: var(--primary-color);
+    top: -80px;
+    left: -80px;
+    animation: float 18s infinite alternate ease-in-out;
+}
+
+.shape-2 {
+    width: 80vw;
+    height: 80vw;
+    background-color: var(--secondary-color);
+    bottom: -60px;
+    right: -60px;
+    animation: float 12s infinite alternate-reverse ease-in-out;
+}
+
+.shape-3 {
+    width: 80vw;
+    height: 80vw;
+    background-color: var(--tertiary-color);
+    top: 65%;
+    left: 25%;
+    animation: float 16s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(60px, 40px) rotate(7deg);
+    }
+    100% {
+        transform: translate(-40px, 60px) rotate(-7deg);
+    }
+}
+
+.content {
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    border: 3px dashed var(--secondary-color);
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 25px var(--fourwhatever-color), inset 0 0 10px var(--tertiary-color);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    margin-bottom: 2rem;
+    color: var(--tertiary-color);
+    text-shadow: 2px 2px 0 var(--primary-color), 0 0 10px var(--primary-color);
+}
+
+.answer {
+    font-family: 'Silkscreen', monospace;
+    font-size: clamp(5rem, 15vw, 12rem);
+    margin-top: 2rem;
+    letter-spacing: 0.1em;
+    transition: all 0.5s ease;
+    text-shadow: 0 0 10px var(--secondary-color), 3px 3px 0 var(--primary-color);
+    animation: shimmer 1.5s infinite alternate;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: scale(1.05);
+        filter: hue-rotate(15deg);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        margin-bottom: 1rem;
+    }
+    .answer {
+        margin-top: 1rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="content">
+        <h1>Ferlucci Lundi?</h1>
+        <div class="answer" id="answer"></div>
+    </div>
+
+    <script>
+        // Change this variable to 'true' for YES or 'false' for NO
+        const isYes = true;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const answerElement = document.getElementById('answer');
+            
+            if (isYes) {
+                answerElement.textContent = "YES";
+                answerElement.style.color = "#64FF8C";
+            } else {
+                answerElement.textContent = "NO";
+                answerElement.style.color = "#FF5470";
+            }
+        });
+    </script>
+</body>
+</html>
