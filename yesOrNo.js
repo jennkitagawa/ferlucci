@@ -1,2 +1,2 @@
-// Change this variable to 'true' for OUI or 'false' for NON
+// Change this variable to 'true' for YES or 'false' for NO
 const isYes = true;
